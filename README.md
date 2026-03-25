@@ -46,7 +46,7 @@ python -m pip install -r requirements.txt
 
 #Usage 
 
-git clone https://github.com/<ORG_NAME>/power_mosfet_layout_automation.git
+git clone https://github.com/AC3E-SNPS-Analog-PDK-Team/power_mosfet_layout_automation.git
 cd power_mosfet_layout_automation
 
 Ensure the blocks/ folder contains the required GDS building blocks:
