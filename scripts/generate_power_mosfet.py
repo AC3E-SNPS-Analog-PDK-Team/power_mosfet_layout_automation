@@ -40,8 +40,6 @@ GDS_MID    = BLOCKS_DIR / "bloque_medio.gds"
 GDS_RIGHT  = BLOCKS_DIR / "bloque_derecho.gds"
 GDS_RIGHT1 = BLOCKS_DIR / "bloque_derecho_1_transistor.gds"
 
-GDS_OUT    = os.path.join(BASE_DIR, "powermos_M100_rowblocks_RECT_NO_NOTCH_gatestrap2.gds")
-
 # Espacio extra (um)
 EXTRA_SPACE_X = 0.0
 EXTRA_SPACE_Y = 0.0
@@ -402,8 +400,8 @@ def generate_layout(
             merge_layer_geoms(top, THICKOX_LAYER, THICKOX_DATATYPE)
             print("[INFO] ThickGateOx merge done.")
 
-    out.write_gds(GDS_OUT)
-    print(f"[DONE] wrote: {GDS_OUT}")
+    out.write_gds(str(output_path))
+    print(f"[DONE] wrote: {output_path}")
 
 
 if __name__ == "__main__":
