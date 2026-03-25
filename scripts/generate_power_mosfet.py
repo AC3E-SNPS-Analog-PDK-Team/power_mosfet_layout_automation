@@ -29,16 +29,18 @@ import gdstk
 # ----------------------------
 # CONFIGURA ESTO
 # ----------------------------
-BASE_DIR = "/foss/designs/power_mosfet/dos"
+from pathlib import Path
 
-GDS_LEFT   = os.path.join(BASE_DIR, "bloque_izquierdo.gds")
-GDS_MID    = os.path.join(BASE_DIR, "bloque_medio.gds")
-GDS_RIGHT  = os.path.join(BASE_DIR, "bloque_derecho.gds")
-GDS_RIGHT1 = os.path.join(BASE_DIR, "bloque_derecho_1_transistor.gds")
+BASE_DIR = Path(__file__).resolve().parent.parent
+BLOCKS_DIR = BASE_DIR / "blocks"
+OUTPUT_DIR = BASE_DIR / "output"
+
+GDS_LEFT   = BLOCKS_DIR / "bloque_izquierdo.gds"
+GDS_MID    = BLOCKS_DIR / "bloque_medio.gds"
+GDS_RIGHT  = BLOCKS_DIR / "bloque_derecho.gds"
+GDS_RIGHT1 = BLOCKS_DIR / "bloque_derecho_1_transistor.gds"
 
 GDS_OUT    = os.path.join(BASE_DIR, "powermos_M100_rowblocks_RECT_NO_NOTCH_gatestrap2.gds")
-
-M_TOTAL = 5000
 
 # Espacio extra (um)
 EXTRA_SPACE_X = 0.0
@@ -239,8 +241,14 @@ def add_vertical_gate_rail_top(
     print(f"[GATE] Rail vertical TOP: x=[0,{rail_w}] y=[0,{total_h}]")
 
 
-def main():
-    # --- chequeo rutas ---
+def generate_layout(
+    m_total,
+    output_path,
+    extra_space_x=0.0,
+    extra_space_y=0.0,
+):
+    M_TOTAL = m_total
+# --- chequeo rutas ---
     for p in [GDS_LEFT, GDS_MID, GDS_RIGHT, GDS_RIGHT1]:
         must_exist(p)
 
