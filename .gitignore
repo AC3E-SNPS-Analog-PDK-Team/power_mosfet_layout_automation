@@ -1,5 +1,9 @@
-.venv/
+# Generated outputs
+output/*.gds
+
+# Python
 __pycache__/
 *.pyc
-output/
-*.gds
+
+# Env
+.venv/
