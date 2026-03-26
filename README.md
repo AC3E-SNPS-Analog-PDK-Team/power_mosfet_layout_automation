@@ -60,3 +60,9 @@ python -m runner.main --m_total 100
 This will generate a rectangular layout with 100 transistors. The default output GDS file will be saved in:
 
 output/mosfet_M100.gds
+
+# IMPORTANT
+The LVS of the base blocks is clean in terms of electrical equivalence between schematic and layout. 
+The remaining warnings correspond to discrepancies in port naming, since the base GDS do not contain explicitly exported pins with names consistent with the schematic. 
+
+These base GDS were not modified to add ports, because these blocks are used as input for a script that generates a large MOSFET. Incorporating pins into the base layouts would cause massive replication of labels/ports in the final output, making their handling and extraction difficult.
