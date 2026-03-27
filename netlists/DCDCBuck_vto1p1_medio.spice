@@ -1,0 +1,6 @@
+** sch_path: /foss/designs/power_mosfet/dos/DCDCBuck_vto1p1.sch
+.subckt DCDCBuck_vto1p1 Vs Vg1 Vg2 Vo
+*.PININFO Vs:B Vg1:B Vg2:B Vo:B
+MM2 net1 Vg2 Vs Vs sg13_hv_nmos w=10u l=0.45u ng=1 m=1
+MM1 Vo Vg1 net1 Vs sg13_hv_nmos w=10u l=0.45u ng=1 m=1
+.ends
