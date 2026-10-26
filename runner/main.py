@@ -1,10 +1,11 @@
 import argparse
+import logging
 from pathlib import Path
 
-from scripts.generate_power_mosfet import generate_layout
+from scripts.generate_power_mosfet import LayoutConfig, generate_layout
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
         description="Power MOSFET Layout Generator"
     )
@@ -16,6 +17,8 @@ def main():
 
     args = parser.parse_args()
 
+    logging.basicConfig(level=logging.INFO, format="%(message)s")
+
     base_dir = Path(__file__).resolve().parent.parent
     output_dir = base_dir / "output"
     output_dir.mkdir(exist_ok=True)
@@ -25,12 +28,12 @@ def main():
     else:
         output_path = output_dir / f"mosfet_M{args.m_total}.gds"
 
-    generate_layout(
+    config = LayoutConfig(
         m_total=args.m_total,
-        output_path=output_path,
         extra_space_x=args.extra_x,
         extra_space_y=args.extra_y,
     )
+    generate_layout(config, output_path)
 
 
 if __name__ == "__main__":
