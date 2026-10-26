@@ -123,32 +123,34 @@ def merge_layer_geoms(cell: gdstk.Cell, layer: int, datatype: int, precision: fl
     Merge (OR) de geometría en (layer,datatype) dentro de 'cell', incluyendo polygons y paths.
     Requiere flatten del cell para que la geometría de subceldas quede en esta celda.
     """
+    # Cell.polygons / Cell.paths son de solo lectura: se usa remove()/add().
     target = []
-    keep_polys = []
-    keep_paths = []
+    remove_polys = []
+    remove_paths = []
 
     for p in cell.polygons:
         if p.layer == layer and p.datatype == datatype:
             target.append(p)
-        else:
-            keep_polys.append(p)
+            remove_polys.append(p)
 
     for path in cell.paths:
-        if path.layer == layer and path.datatype == datatype:
-            target.extend(path.to_polygons())
-        else:
-            keep_paths.append(path)
+        # Un path puede tener varias capas; to_polygons las expande por separado.
+        polys = path.to_polygons()
+        hits = [p for p in polys if p.layer == layer and p.datatype == datatype]
+        if hits:
+            target.extend(hits)
+            remove_paths.append(path)
+            # conservar la parte del path que está en otras capas
+            cell.add(*(p for p in polys if not (p.layer == layer and p.datatype == datatype)))
 
     print(f"[MERGE] Found {len(target)} shapes on layer={layer}, datatype={datatype}")
 
     if not target:
-        cell.polygons = keep_polys
-        cell.paths = keep_paths
         return
 
-    merged = gdstk.boolean(target, None, "or", precision=precision) or []
-    cell.polygons = keep_polys + merged
-    cell.paths = keep_paths
+    merged = gdstk.boolean(target, [], "or", precision=precision, layer=layer, datatype=datatype)
+    cell.remove(*remove_polys, *remove_paths)
+    cell.add(*merged)
     print(f"[MERGE] After OR -> {len(merged)} merged polygons")
 
 def _max_y_of_layer(cell: gdstk.Cell, layer: int, datatype: int):
