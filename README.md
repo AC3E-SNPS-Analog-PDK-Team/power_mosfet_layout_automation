@@ -61,6 +61,29 @@ This will generate a rectangular layout with 100 transistors. The default output
 
 output/mosfet_M100.gds
 
+Common options (run `python -m runner.main --help` for the full list):
+
+```bash
+python -m runner.main -m 100 --dry-run              # only print the row plan
+python -m runner.main -m 100 -o my_dir/m100.gds     # custom output path
+python -m runner.main -m 100 --extra-x 0.5 --extra-y 1.0
+python -m runner.main -m 100 --thickox-layer 75/20  # flatten + merge ThickGateOx
+python -m runner.main -m 100 --no-gate-strap        # skip POLY strap and gate rail
+python -m runner.main -m 100 -v                     # detailed progress
+```
+
+Gate/active layers, strap clearance/height and rail width are configurable with
+`--gate-layer`, `--active-layer`, `--strap-clearance`, `--strap-min-height` and
+`--rail-width`. The tool exits with status 1 if the blocks are missing or no
+rectangular layout exists for the requested `m_total` (e.g. `m_total < 3`).
+
+Type checking (strict mypy, configured in `pyproject.toml`):
+
+```bash
+python -m pip install -r requirements-dev.txt
+python -m mypy
+```
+
 # IMPORTANT
 The LVS of the base blocks is clean in terms of electrical equivalence between schematic and layout. 
 The remaining warnings correspond to discrepancies in port naming, since the base GDS do not contain explicitly exported pins with names consistent with the schematic. 
