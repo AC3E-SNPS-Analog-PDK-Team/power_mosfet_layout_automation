@@ -40,9 +40,6 @@ GDS_MID    = BLOCKS_DIR / "bloque_medio.gds"
 GDS_RIGHT  = BLOCKS_DIR / "bloque_derecho.gds"
 GDS_RIGHT1 = BLOCKS_DIR / "bloque_derecho_1_transistor.gds"
 
-# Espacio extra (um)
-EXTRA_SPACE_X = 0.0
-EXTRA_SPACE_Y = 0.0
 
 # ---- MERGE ThickGateOx.drawing (opcional) ----
 DO_THICKOX_MERGE = False
@@ -298,8 +295,8 @@ def generate_layout(
             if n_rows <= 0:
                 continue
 
-            W = row_width(n_mid, use_right1, w_l, w_m, w_r, w_r1, EXTRA_SPACE_X)
-            H = n_rows * h_row + max(0, n_rows - 1) * EXTRA_SPACE_Y
+            W = row_width(n_mid, use_right1, w_l, w_m, w_r, w_r1, extra_space_x)
+            H = n_rows * h_row + max(0, n_rows - 1) * extra_space_y
             if W <= 0 or H <= 0:
                 continue
 
@@ -365,12 +362,12 @@ def generate_layout(
 
         # LEFT
         top.add(gdstk.Reference(L, origin=(x - l0x, y - l0y)))
-        x += w_l + EXTRA_SPACE_X
+        x += w_l + extra_space_x
 
         # MID chain
         for _k in range(n_mid):
             top.add(gdstk.Reference(M, origin=(x - m0x, y - m0y)))
-            x += w_m + EXTRA_SPACE_X
+            x += w_m + extra_space_x
 
         # RIGHT end (misma opción para todas las filas)
         if use_right1:
@@ -378,10 +375,10 @@ def generate_layout(
         else:
             top.add(gdstk.Reference(R, origin=(x - r0x, y - r0y)))
 
-        y += h_row + EXTRA_SPACE_Y
+        y += h_row + extra_space_y
 
     # --- Rail vertical en TOP para unir filas ---
-    TOTAL_H = n_rows * h_row + max(0, n_rows - 1) * EXTRA_SPACE_Y
+    TOTAL_H = n_rows * h_row + max(0, n_rows - 1) * extra_space_y
     add_vertical_gate_rail_top(
         top,
         total_w=W,
