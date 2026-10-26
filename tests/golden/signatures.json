@@ -1,0 +1,112 @@
+{
+  "mosfet_M100.gds": {
+    "cells": [
+      "L__DCDCBuck_vto1p1",
+      "M__DCDCBuck_vto1p1",
+      "NMOSHV_PWR_M100_NO_NOTCH",
+      "R1__DCDCBuck_vto1p1",
+      "R__DCDCBuck_vto1p1"
+    ],
+    "sha256": "dc27b0cc01c8e1c09d984aeee36185f9f681493f8a4c89b775bdff687ecca193",
+    "top": "NMOSHV_PWR_M100_NO_NOTCH",
+    "top_layers": {
+      "1/0": 256,
+      "14/0": 56,
+      "44/0": 52,
+      "5/0": 153,
+      "5/2": 48,
+      "51/0": 100,
+      "6/0": 6032,
+      "8/0": 252,
+      "8/2": 100
+    }
+  },
+  "mosfet_M23.gds": {
+    "cells": [
+      "L__DCDCBuck_vto1p1",
+      "M__DCDCBuck_vto1p1",
+      "NMOSHV_PWR_M23_NO_NOTCH",
+      "R1__DCDCBuck_vto1p1",
+      "R__DCDCBuck_vto1p1"
+    ],
+    "sha256": "140e8053d39e9a267ccdd7e832c2ef8f776a07a6f370411dfeee186a701d3dd2",
+    "top": "NMOSHV_PWR_M23_NO_NOTCH",
+    "top_layers": {
+      "1/0": 59,
+      "14/0": 13,
+      "44/0": 12,
+      "5/0": 36,
+      "5/2": 11,
+      "51/0": 23,
+      "6/0": 1392,
+      "8/0": 58,
+      "8/2": 23
+    }
+  },
+  "mosfet_M3.gds": {
+    "cells": [
+      "L__DCDCBuck_vto1p1",
+      "M__DCDCBuck_vto1p1",
+      "NMOSHV_PWR_M3_NO_NOTCH",
+      "R1__DCDCBuck_vto1p1",
+      "R__DCDCBuck_vto1p1"
+    ],
+    "sha256": "c292aa36a1307a80e8ce21f266bd366e4d8eedfaea55c0f4b8269cf9aa669b3f",
+    "top": "NMOSHV_PWR_M3_NO_NOTCH",
+    "top_layers": {
+      "1/0": 9,
+      "14/0": 3,
+      "44/0": 2,
+      "5/0": 6,
+      "5/2": 1,
+      "51/0": 3,
+      "6/0": 232,
+      "8/0": 8,
+      "8/2": 3
+    }
+  },
+  "mosfet_M4.gds": {
+    "cells": [
+      "L__DCDCBuck_vto1p1",
+      "M__DCDCBuck_vto1p1",
+      "NMOSHV_PWR_M4_NO_NOTCH",
+      "R1__DCDCBuck_vto1p1",
+      "R__DCDCBuck_vto1p1"
+    ],
+    "sha256": "46f861222666ca1141637dfb6835575d12511f778089ca9d1f8142e772a93551",
+    "top": "NMOSHV_PWR_M4_NO_NOTCH",
+    "top_layers": {
+      "1/0": 10,
+      "14/0": 3,
+      "44/0": 2,
+      "5/0": 7,
+      "5/2": 2,
+      "51/0": 4,
+      "6/0": 261,
+      "8/0": 10,
+      "8/2": 4
+    }
+  },
+  "mosfet_M5000.gds": {
+    "cells": [
+      "L__DCDCBuck_vto1p1",
+      "M__DCDCBuck_vto1p1",
+      "NMOSHV_PWR_M5000_NO_NOTCH",
+      "R1__DCDCBuck_vto1p1",
+      "R__DCDCBuck_vto1p1"
+    ],
+    "sha256": "ed75e992ec44447ebbc9cbe448e96268220363d36d730d94bfd3150ebcf593af",
+    "top": "NMOSHV_PWR_M5000_NO_NOTCH",
+    "top_layers": {
+      "1/0": 12500,
+      "14/0": 2525,
+      "44/0": 2500,
+      "5/0": 7501,
+      "5/2": 2500,
+      "51/0": 5000,
+      "6/0": 290725,
+      "8/0": 12500,
+      "8/2": 5000
+    }
+  }
+}
